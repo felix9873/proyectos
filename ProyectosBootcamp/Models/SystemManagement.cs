@@ -9,9 +9,9 @@ namespace ProyectosBootcamp.Models
 {
     public class SystemManagement
     {
-        private List<OrderBook> _orders; 
+        private List<OrderBook> _orders =  new List<OrderBook>();
         
-        private List<Reader> _readers;
+        private List<Reader> _readers = new List<Reader>();
 
         public void AddOrders(OrderBook orderBook)
         {
