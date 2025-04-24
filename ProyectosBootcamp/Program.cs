@@ -67,12 +67,12 @@ void AdmOrders(SystemManagement systemManagement)
     bool regresar = false;
     while (!regresar)
     {
-        Console.WriteLine("\nGestion de Empleados: ");
+        Console.WriteLine("\nGestion de orders: ");
         Console.WriteLine("\nSeleccione una opcion: ");
-        Console.WriteLine("1. Agregar un empleado");
-        Console.WriteLine("2. Ver lista de empleados");
-        Console.WriteLine("3. Ver empleado por Id");
-        Console.WriteLine("4. Mostrar lista de tipos de empleados");
+        Console.WriteLine("1. Agregar una order");
+        Console.WriteLine("2. Ver lista de orders");
+        Console.WriteLine("3. Ver order por Id");
+        Console.WriteLine("4. Mostrar lista de tipos de order");
         Console.WriteLine("0. Regresar al menu principal");
 
         string opcion = Console.ReadLine();

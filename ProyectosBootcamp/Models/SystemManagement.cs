@@ -51,6 +51,7 @@ namespace ProyectosBootcamp.Models
             Console.WriteLine("orders book");
             for (int i = 0; i < orders.Count; i++)
             {
+                Console.WriteLine("------------------------");
                 Console.WriteLine($" id {orders[i].Id}");
                 Console.WriteLine($" name {orders[i].Name}");
                 Console.WriteLine($" nroOrder {orders[i].NroOrder}");
