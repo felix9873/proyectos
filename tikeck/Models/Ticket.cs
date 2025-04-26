@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tikeck.Models.Enum;
 
 namespace tikeck.Models
 {
-    public enum StatusTicket
-    {
-        Active,
-        Inactive,
-        Pause
-    }
+   
     public class Ticket
     {
         public static int _id = 1;
@@ -19,12 +15,14 @@ namespace tikeck.Models
         public string Description { get; set; }
         public StatusTicket Status { get; set; }
 
+        public Priority Priority { get; set; }
+
         public string ReporteBy { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime LastUpdated {  get; set; }
-        public Developer AssignedTo { get; set; }   
+        public Developer AssignedTo { get; set; }
 
-        List<Comment> _comments = new List<Comment>();
+        public List<Comment> Comments { get; set; } = new List<Comment>();
 
 
         public Ticket()
@@ -34,17 +32,29 @@ namespace tikeck.Models
 
         public void AddComment(Comment comment)
         {
-            _comments.Add(comment);
+            Comments.Add(comment);
         }
 
-        public List<Comment> comments()
+        public List<Comment> GetComments()
         {
-            return _comments;
+            return Comments;
+        }
+
+        public void UpdatedStatus(StatusTicket status)
+        {
+            Status = status;
+            LastUpdated = DateTime.Now;
+        }
+         
+        public void AssignTo(Developer developer)
+        {
+            AssignedTo = developer;
+            LastUpdated = DateTime.Now;
         }
 
         public Comment GetCommentById(int id)
         {
-            return _comments.FirstOrDefault(c => c.Id == id);
+            return Comments.FirstOrDefault(c => c.Id == id);
         }
 
         public void ShowComment(List<Comment> comments)

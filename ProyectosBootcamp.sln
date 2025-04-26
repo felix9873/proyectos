@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectosBootcamp", "ProyectosBootcamp\ProyectosBootcamp.csproj", "{D9E723A6-7503-44E5-BF43-A50F1948743C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tikeck", "tikeck\tikeck.csproj", "{891B909E-8B70-4C91-A74C-D13207D315A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D9E723A6-7503-44E5-BF43-A50F1948743C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9E723A6-7503-44E5-BF43-A50F1948743C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9E723A6-7503-44E5-BF43-A50F1948743C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{891B909E-8B70-4C91-A74C-D13207D315A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{891B909E-8B70-4C91-A74C-D13207D315A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{891B909E-8B70-4C91-A74C-D13207D315A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{891B909E-8B70-4C91-A74C-D13207D315A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
