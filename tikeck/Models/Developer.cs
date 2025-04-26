@@ -16,7 +16,7 @@ namespace tikeck.Models
         public RoleDeveloper Role { get; set; }
         public List<Ticket> AssingTickect { get; set; } = new List<Ticket>();
         
-        public Developer(RoleDeveloper role )
+        public Developer()
         {
             Id = _id++;
  

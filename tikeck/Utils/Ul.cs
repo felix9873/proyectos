@@ -29,10 +29,11 @@ namespace tikeck.Utils
                     switch (opcion)
                     {
                         case 1:
-                            AdmDeveloper(sistema);
+                            AdmTicket(sistema);
+                            
                             break;
                         case 2:
-                            GestionProductos(sistema);
+                            AdmDeveloper(sistema);
                             break;
                         
                         default:
@@ -56,9 +57,9 @@ namespace tikeck.Utils
             {
                 Console.WriteLine("\nGestion de Empleados: ");
                 Console.WriteLine("\nSeleccione una opcion: ");
-                Console.WriteLine("1. Agregar un empleado");
-                Console.WriteLine("2. Ver lista de empleados");
-                Console.WriteLine("3. Ver empleado por Id");
+                Console.WriteLine("1. Agregar un developer");
+                Console.WriteLine("2. Ver lista de developer");
+                Console.WriteLine("3. Ver developer por Id");
                
 
                 string opcion = Console.ReadLine();
@@ -81,17 +82,18 @@ namespace tikeck.Utils
             }
         }
 
-        static void GestionProductos(SystemTikect sistema)
+        static void AdmTicket(SystemTikect sistema)
         {
             bool regresar = false;
             ITicketService servicio = new TIcketService();
+
             while (!regresar)
             {
-                Console.WriteLine("\nGestion de Productos: ");
+                Console.WriteLine("\nGestion de Ticket: ");
                 Console.WriteLine("\nSeleccione una opcion: ");
-                Console.WriteLine("1. Agregar un producto");
-                Console.WriteLine("2. Ver lista de productos");
-                Console.WriteLine("3. Ver empleado por Id");
+                Console.WriteLine("1. Agregar un ticket");
+                Console.WriteLine("2. Ver lista de ticket");
+                Console.WriteLine("3. Ver ticket por Id");
 
                 string opcion = Console.ReadLine();
 
