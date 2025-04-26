@@ -13,7 +13,8 @@ namespace ProyectosBootcamp.Interfaces
         Horror,
         Fantasy,
         Romance,
-        Scifi
+        Scifi,
+        Default
     }
 
     public interface OrderBook

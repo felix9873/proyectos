@@ -10,8 +10,9 @@ namespace ProyectosBootcamp.Models
 {
     public class Book : OrderBook
     {
+        public static int nextid = 1;
         private string _name;
-        private int _id;
+        private int _id = 0;
 
         private string _nroOrder;
 
@@ -28,7 +29,7 @@ namespace ProyectosBootcamp.Models
         public Book(string name, string nroOrder, GenderBook genderBook, DateTime fechOrder)
         {
             _name = name;
-            _id++;
+            _id = nextid++;
             _nroOrder = nroOrder;
             _genderBook = genderBook;
             _fechOrder = fechOrder;
@@ -36,6 +37,12 @@ namespace ProyectosBootcamp.Models
 
         public void Order()
         {
+            Console.WriteLine("order");
+            Console.WriteLine($"id  {Id}");
+            Console.WriteLine($"name  {Name}");
+            Console.WriteLine($"nroOrder {NroOrder}");
+            Console.WriteLine($"fech {FechOrder}");
+            Console.WriteLine($"gender {GenderBook}");
             
         }
     }

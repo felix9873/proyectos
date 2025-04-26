@@ -60,8 +60,19 @@ namespace ProyectosBootcamp.Models
                 switch(orders[i].GenderBook)
                 {
                     case GenderBook.Horror:
-                        Console.WriteLine("Gender book : Horror");
+                        Console.WriteLine(" Gender book : Horror");
                         break;
+                    case GenderBook.Fantasy:
+                        Console.WriteLine(" Gender Book : Fantasy");
+                        break;
+                    case GenderBook.Romance:
+                        Console.WriteLine(" Gender Book : Romance");
+                        break;
+                    case GenderBook.Scifi:
+                        Console.WriteLine(" Gender Book : Sci fi");
+                        break;
+                    default: Console.WriteLine("ingresa un genero valido");
+                            break;  
                 }
 
             }
