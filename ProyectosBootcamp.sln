@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectosBootcamp", "Proyec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tikeck", "tikeck\tikeck.csproj", "{891B909E-8B70-4C91-A74C-D13207D315A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoModulo2", "ProyectoModulo2\ProyectoModulo2.csproj", "{D5FC3485-E93C-427E-AE52-D6339465AA03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{891B909E-8B70-4C91-A74C-D13207D315A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{891B909E-8B70-4C91-A74C-D13207D315A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{891B909E-8B70-4C91-A74C-D13207D315A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5FC3485-E93C-427E-AE52-D6339465AA03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FC3485-E93C-427E-AE52-D6339465AA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FC3485-E93C-427E-AE52-D6339465AA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FC3485-E93C-427E-AE52-D6339465AA03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

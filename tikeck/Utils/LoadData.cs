@@ -7,74 +7,20 @@ namespace tikeck.Utils
 {
     public class LoadData
     {
-        static Developer developer;
-        static Developer developer2;
+        
         public static void CargarDatosIniciales(SystemTikect sistema)
         {
+            sistema.AddDeveloper(new Developer { Name = "max" , Age = 25, Dni ="8787878"});
+            sistema.AddDeveloper(new Developer { Name = "felix", Age = 40, Dni = "9313131" });
+            sistema.AddDeveloper(new Developer { Name = "lucia", Age = 20, Dni = "9921211" });
+            sistema.AddDeveloper(new Developer { Name = "dante", Age = 15, Dni = "12133131" });
 
-            List<Comment> comments = new List<Comment>()
+            var ticket1 = new Ticket
             {
-               new Comment("LOREFDFD","DFDFDFD"),
-               new Comment("DFDFDF","DSFDFDFDFDF"),
-
+                Title = "Login page error",
+                Description = "Users are unable to login after the recent update",
+                Priority = Priority.MEDIUM,
             };
-
-
-            List<Ticket> tickets = new List<Ticket>()
-            {
-                new Ticket
-                {
-                    AssignedTo = developer,
-                    ReporteBy = "",
-                    Comments = comments,
-                    CreateDate = DateTime.Now,
-                    LastUpdated = DateTime.Now,
-                    Priority = Priority.HIGH,
-                    Status = StatusTicket.Active,
-                },
-
-                new Ticket
-                {
-                    AssignedTo = developer2,
-                    ReporteBy = "",
-                    Comments = comments,
-                    CreateDate = DateTime.Now,
-                    LastUpdated = DateTime.Now,
-                    Priority = Priority.HIGH,
-                    Status = StatusTicket.Active,
-                }
-            };
-
-            developer = new Developer
-            {
-                Name = "Andre Antonio",
-                Gender = Gender.Male,
-                Dni = "9887787",
-                Direction = "",
-                Age = 20,
-                Role = RoleDeveloper.CiberSecurity,
-                AssingTickect = tickets,
-            };
-
-            developer2 = new Developer
-            {
-                Name = "mark diaz",
-                Gender = Gender.Male,
-                Dni = "723413441",
-                Direction = "",
-                Age = 30,
-                Role = RoleDeveloper.FullStack,
-                AssingTickect = tickets,
-            };
-
-            sistema.AddDeveloper(developer);
-            sistema.AddDeveloper(developer2);
-            
-            sistema.AddTicket(tickets[0]);
-            sistema.AddTicket(tickets[1]);
-            
-           
-            
 
         }
     }

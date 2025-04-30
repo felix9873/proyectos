@@ -11,6 +11,8 @@ namespace tikeck.Models
     public class Ticket
     {
         public static int _id = 1;
+
+        public string Title { get; set; }
         public int Id { get; set; }
         public string Description { get; set; }
         public StatusTicket Status { get; set; }
@@ -30,41 +32,23 @@ namespace tikeck.Models
             Id = _id++;
         }
 
-        public void AddComment(Comment comment)
+        public void AddSComment(Comment comment)
         {
             Comments.Add(comment);
         }
 
-        public List<Comment> GetComments()
-        {
-            return Comments;
-        }
-
-        public void UpdatedStatus(StatusTicket status)
+        public void UpdateStatus(StatusTicket  status)
         {
             Status = status;
-            LastUpdated = DateTime.Now;
+            CreateDate = DateTime.Now;
         }
-         
+
         public void AssignTo(Developer developer)
         {
             AssignedTo = developer;
-            LastUpdated = DateTime.Now;
+            CreateDate = DateTime.Now;
         }
 
-        public Comment GetCommentById(int id)
-        {
-            return Comments.FirstOrDefault(c => c.Id == id);
-        }
 
-        public void ShowComment(List<Comment> comments)
-        {
-            
-
-            foreach (var item in comments)
-            {
-                Console.WriteLine($"id {item.Id} text  {item.Text} author  {item.Author}  create date {item.CreatedDate} ");
-            }
-        }
     }
 }

@@ -13,7 +13,7 @@ namespace tikeck
         private List<Ticket> _ticketList = new List<Ticket>();
         private List<Developer> _developerList = new List<Developer>();
 
-        public void AddTicket(Ticket ticket)
+        public void addTicket(Ticket ticket)
         {
             _ticketList.Add(ticket);
         }
@@ -22,73 +22,15 @@ namespace tikeck
         {
             return _ticketList.OrderByDescending(t => t.CreateDate).ToList();
         }
-
-        public Ticket GetTicketById(int ticketId)
+         
+        public Ticket GetTicketById(int id)
         {
-            return _ticketList.FirstOrDefault(t => t.Id == ticketId);
+            return _ticketList.FirstOrDefault(t => t.Id == id);
         }
 
-        public void UpdatedStatus(int ticketId, StatusTicket status)
+        public List<Ticket> GetTicketByStatus(StatusTicket status)
         {
-            var ticket = GetTicketById(ticketId);
-
-            if (ticket != null)
-            {
-                ticket.UpdatedStatus(status);
-            }
-            else
-            {
-                throw new KeyNotFoundException("");
-            }
-        }
-
-        public void AssigTicket(int ticketId, Developer developer)
-        {
-            var ticket = GetTicketById(ticketId);
-
-            if (ticket != null)
-            {
-                ticket.AssignTo(developer);
-                if (!developer.AssingTickect.Contains(ticket))
-                {
-                    developer.AssingTickect.Add(ticket);
-                }
-            }
-            else
-            {
-                throw new KeyNotFoundException();
-            }
-        }
-
-        public void AddCommentToTicket(int ticketId, string author, string text)
-        {
-            var ticket = GetTicketById(ticketId);
-
-
-            if (ticket != null) 
-            { 
-                var comment = new Comment(author,text);
-                ticket.AddComment(comment);
-            }
-            else
-            {
-                throw new KeyNotFoundException();
-            }
-        }
-
-        public void AddDeveloper(Developer developer)
-        {
-            _developerList.Add(developer);
-        }
-
-        public List<Developer> GetDeveloperList()
-        {
-            return _developerList;
-        }
-
-        public List<Ticket> GetTikectByStatus(StatusTicket statusTicket)
-        {
-            return _ticketList.Where(t => t.Status == statusTicket).ToList();
+            return _ticketList.Where(t => t.Status == status).ToList();
         }
 
         public List<Ticket> GetTicketByPriority(Priority priority)
@@ -96,14 +38,54 @@ namespace tikeck
             return _ticketList.Where(t => t.Priority == priority).ToList();
         }
 
-        public List<Ticket> GetTicketByAssign(string assignName)
+        public void UpdatedStatus(int idTicket, StatusTicket status)
         {
-            return _ticketList.Where(t =>
-            t.AssignedTo != null &&
-            t.AssignedTo.Name.ToLower().Contains(assignName.ToLower())).ToList();
+            var ticket = GetTicketById(idTicket);
+
+            if (ticket != null) 
+            { 
+                ticket.UpdateStatus(status);
+            }
+            else
+            {
+
+            }
         }
 
+        public void AssignTicket(int id, Developer developer)
+        {
+            var ticket = GetTicketById(id);
 
+            if (ticket != null) 
+            { 
+                ticket.AssignTo(developer);
+
+                if(!developer.AssingTickect.Contains(ticket))
+                {
+                    developer.AssingTickect.Add(ticket);
+                }
+            }
+        }
+
+        public void AddCommentToTicket(int idTicket,string author, string text)
+        {
+            var ticket = GetTicketById(idTicket);
+
+            if (ticket != null) 
+            {
+                var comment = new Comment(author, text);
+
+                if (comment != null) 
+                { 
+                    ticket.AddSComment(comment);
+                }
+            }
+        }
+
+        public void AddDeveloper(Developer developer)
+        {
+            _developerList.Add(developer);
+        }
     }
 }
 
