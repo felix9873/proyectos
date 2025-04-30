@@ -1,4 +1,5 @@
-﻿using ProyectoModulo2.Models.Interfaz;
+﻿using ProyectoModulo2.Models.Enum;
+using ProyectoModulo2.Models.Interfaz;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace ProyectoModulo2.Models
     {
         List<Order> orders = new List<Order>();
 
+        public TypePerson TypePerson { get; set; }
 
-
+        
     }
 }

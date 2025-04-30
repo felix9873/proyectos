@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoModulo2.Models.Interfaz
+namespace ProyectoModulo2.Models.Enum
 {
-    public class GenderBook
+    public enum TypePerson
     {
-
+        Employee,
+        Client
     }
 }

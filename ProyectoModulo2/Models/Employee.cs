@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoModulo2.Models.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,11 @@ namespace ProyectoModulo2.Models
     public class Employee : Person
     {
         List<Book> books = new List<Book>();
+
+        public TypePerson Type { get; set; }
+
+
+
 
     }
 }
