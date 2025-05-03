@@ -13,6 +13,7 @@ namespace ProyectoModulo2.Models.Abstact
         public int Id { get; set; }
         public int IdClient { get; set; }
         public int IdBook { get; set; }
+        public List<Payment> Payments { get; set; } = new List<Payment>();
         public Payment AssignToPayment { get; set; }
         public DateTime fechOrder {  get; set; }
 
