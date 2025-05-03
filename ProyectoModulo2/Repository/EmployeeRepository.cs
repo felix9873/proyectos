@@ -11,17 +11,6 @@ namespace ProyectoModulo2.Repository
     {
         private List<Employee> _employees = new List<Employee>();
 
-
-        public void Add(Employee entity)
-        {
-            _employees.Add(entity);
-        }
-
-        public void Delete(Employee entity)
-        {
-            _employees.Remove(entity);
-        }
-
         public List<Employee> GetAll()
         {
             return _employees;
@@ -32,16 +21,28 @@ namespace ProyectoModulo2.Repository
             return _employees.FirstOrDefault(e => e.Id == id);
         }
 
-        public List<Employee> GetEmployeByName(string employeName)
+        public void Add(Employee entity)
         {
-            return _employees.Where(e => e.Name == employeName).ToList();
+            _employees.Add(entity);
         }
 
         public void Update(Employee entity)
         {
             var index = _employees.FindIndex(e => e.Id == entity.Id);
 
-            if(index != -1) _employees[index] = entity;
+            if (index != -1) _employees[index] = entity;
         }
+
+        public void Delete(Employee entity)
+        {
+            _employees.Remove(entity);
+        }
+
+        public List<Employee> GetEmployeByName(string employeName)
+        {
+            return _employees.Where(e => e.Name == employeName).ToList();
+        }
+
+        
     }
 }

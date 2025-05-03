@@ -93,15 +93,31 @@ namespace ProyectoModulo2.Repository
             });
         }
 
+        public List<Client> GetAll()
+        {
+            return _clients;
+        }
+        public Client GetById(int id)
+        {
+            return _clients.FirstOrDefault(c => c.Id == id);
+        }
+
         public void Add(Client entity)
         {
             entity.Id = _nextId++;  
             _clients.Add(entity);
         }
 
-        public List<Client> GetAll()
+        public void Update(Client entity)
         {
-            return _clients;
+            var index = _clients.FindIndex(c => c.Id == entity.Id);
+
+            if (index != -1) _clients[index] = entity;
+        }
+
+        public void Delete(Client entity)
+        {
+            _clients.Remove(entity);
         }
 
         public List<Client> GetByDni(string dni)
@@ -114,21 +130,9 @@ namespace ProyectoModulo2.Repository
             return _clients.Where(t => t.Email == email).ToList();
         }
 
-        public Client GetById(int id)
-        {
-            return _clients.FirstOrDefault(c => c.Id == id);
-        }
+      
+       
 
-        public void Delete(Client entity)
-        {
-            _clients.Remove(entity);
-        }
-
-        public void Update(Client entity)
-        {
-            var index = _clients.FindIndex(c => c.Id == entity.Id);
-
-            if(index != -1) _clients[index] = entity;
-        }
+        
     }
 }
