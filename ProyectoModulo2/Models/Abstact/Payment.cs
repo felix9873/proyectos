@@ -1,4 +1,5 @@
-﻿using ProyectoModulo2.Models.Interfaz;
+﻿using ProyectoModulo2.Models.Enum;
+using ProyectoModulo2.Models.Interfaz;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,10 @@ namespace ProyectoModulo2.Models.Abstact
 {
     public class Payment : IPayment
     {
-        public void ProcessPayment(float amount, string message)
+        public TypePayment TypePayment { get; set; }
+        public virtual void ProcessPayment(float amount, string message)
         {
-            Console.WriteLine($"amount with {message}"); 
+            Console.WriteLine($"amount {amount} with {message}"); 
         }
     }
 }

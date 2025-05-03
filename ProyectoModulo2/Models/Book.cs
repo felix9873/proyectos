@@ -16,7 +16,6 @@ namespace ProyectoModulo2.Models
         
         public GenderBook GenderBook { get; set; }
 
-
         public override string ToString()
         {
             return $"book {Title} id {Id} author {Author} gender book {GenderBook.ToString()}";
