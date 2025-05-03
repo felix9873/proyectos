@@ -1,4 +1,5 @@
-﻿using ProyectoModulo2.Models.Enum;
+﻿using ProyectoModulo2.Models.Abstact;
+using ProyectoModulo2.Models.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,12 @@ namespace ProyectoModulo2.Models
 {
     public class Employee : Person
     {
-        List<Book> books = new List<Book>();
-
         public TypePerson Type { get; set; }
 
-
+        public override string ToString()
+        {
+            return base.ToString();
+        }
 
 
     }
