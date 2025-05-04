@@ -12,7 +12,7 @@ namespace ProyectoModulo2.Repository
     {
         Client GetByDni(string dni);
         Client GetByEmail(string email);
-        List<Order> GetClientOrder(int customerId)
+        List<Order> GetClientOrder(int clientId);
     }
 
 }

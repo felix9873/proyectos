@@ -12,6 +12,7 @@ namespace ProyectoModulo2.Repository
    public class ClientRepository : IClientRepository
    {
         private List<Client> _clients = new List<Client>();
+        private List<Order> _orders = new List<Order>();
         private int _nextId = 1;
 
         public ClientRepository()
@@ -120,19 +121,20 @@ namespace ProyectoModulo2.Repository
             _clients.Remove(entity);
         }
 
-        public List<Client> GetByDni(string dni)
+
+        public Client GetByDni(string dni)
         {
-            return _clients.Where(t => t.Dni == dni).ToList();
+            return _clients.FirstOrDefault(c => c.Dni == dni);
         }
 
-        public List<Client> GetByEmail(string email)
+        public Client GetByEmail(string email)
         {
-            return _clients.Where(t => t.Email == email).ToList();
+            return _clients.FirstOrDefault(c => c.Email == email);
         }
 
-      
-       
-
-        
+        public List<Order> GetClientOrder(int clientId)
+        {
+            return _orders.Where(o => o.IdClient == clientId).ToList();
+        }
     }
 }

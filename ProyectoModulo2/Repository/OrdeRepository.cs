@@ -52,7 +52,7 @@ namespace ProyectoModulo2.Repository
 
         public List<Order> GetOrders()
         {
-            throw new NotImplementedException();
+            return _orders;
         }
 
         public List<Order> GetOrderByClient(int clientId)
@@ -67,9 +67,19 @@ namespace ProyectoModulo2.Repository
         }
 
         
-        public Order GetOrderByBookId(int customerId)
+        public Order GetOrderByBookId(int clientId)
         {
-            throw new NotImplementedException();
+            return _orders.FirstOrDefault(o => o.IdClient == clientId);
+        }
+
+        public List<Order> GetOrdeByClient(int clientId)
+        {
+            return _orders.Where(o => o.IdClient == clientId).ToList();
+        }
+
+        public List<Order> GetOrdeByBook(int bookId)
+        {
+            return _orders.Where(o => o.IdBook == bookId).ToList();
         }
     }
 }
