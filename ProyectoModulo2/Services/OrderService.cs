@@ -18,6 +18,11 @@ namespace ProyectoModulo2.Services
             _orderRepository = orderRepository;
         }
 
+        public void Add(Order order)
+        {
+            _orderRepository.Add(order);
+        }
+
         public Payment AssignPayment(Payment payment)
         {
            return  _orderRepository.AssignPayment(payment);
@@ -35,7 +40,7 @@ namespace ProyectoModulo2.Services
 
         public List<Order> GetOrderByIdBook(int id)
         {
-            return _orderRepository.GetOrdeByBook(id);
+            return _orderRepository.GetOrdeByBook(id );
         }
 
         public List<Order> GetOrders()

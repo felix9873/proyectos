@@ -21,15 +21,17 @@ namespace ProyectoModulo2.Repository
         {
             _books.Add(new Book 
             { Id = next_id++,
-              Title = "el hobbit",
+              Title = "the hobbit",
               Author = "J.R.R Tolkien",
               GenderBook = GenderBook.Fantasy,
-              Description = "is a fantasy novel by the British philologist and writer J. R. R. Tolkien."
+              Description = "is a fantasy novel by the British philologist and writer J. R. R. Tolkien.",
+              
+              
             });
             _books.Add(new Book
             {
                 Id = next_id++,
-                Title = "el hobbit",
+                Title = "Lord of the rings ",
                 Author = "J.R.R Tolkien",
                 GenderBook = GenderBook.Fantasy,
                 Description = "is a fantasy novel by the British philologist and writer J. R. R. Tolkien."
@@ -37,9 +39,9 @@ namespace ProyectoModulo2.Repository
             _books.Add(new Book
             {
                 Id = next_id++,
-                Title = "el hobbit",
-                Author = "J.R.R Tolkien",
-                GenderBook = GenderBook.Fantasy,
+                Title = "it",
+                Author = "stephen king",
+                GenderBook = GenderBook.Horror,
                 Description = "is a fantasy novel by the British philologist and writer J. R. R. Tolkien."
             });
             _books.Add(new Book

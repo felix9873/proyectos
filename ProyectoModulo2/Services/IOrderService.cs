@@ -19,5 +19,7 @@ namespace ProyectoModulo2.Services
 
         List<Order> GetOrderByClientId(int ClientId);
         List<Order> GetOrderByIdBook(int id);
+
+        void Add(Order order);
     }
 }

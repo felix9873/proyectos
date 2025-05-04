@@ -8,12 +8,17 @@ using System.Threading.Tasks;
 
 namespace ProyectoModulo2.Models.Abstact
 {
-    public class Payment : IPayment
+    public abstract class Payment : IPayment
     {
         public TypePayment TypePayment { get; set; }
         public virtual void ProcessPayment(float amount, string message)
         {
             Console.WriteLine($"amount {amount} with {message}"); 
+        }
+
+        public override string ToString()
+        {
+            return $"{TypePayment.ToString()}";
         }
     }
 }

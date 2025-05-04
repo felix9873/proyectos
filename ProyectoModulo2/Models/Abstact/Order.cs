@@ -21,7 +21,7 @@ namespace ProyectoModulo2.Models.Abstact
 
         public override string ToString()
         {
-            return $"order id {Id} ";
+            return $"order id {Id} book id {IdBook} Type payment {AssignToPayment.ToString()} type order {TypeOrder.ToString()}";
         }
 
     }

@@ -18,12 +18,9 @@ namespace ProyectoModulo2.Models
 
         public override string ToString()
         {
-            return $"book {Title} id {Id} author {Author} gender book {GenderBook.ToString()}";
+            return $" {Title} id {Id} author {Author} gender book {GenderBook.ToString()}";
         }
 
-        public static implicit operator List<object>(Book v)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

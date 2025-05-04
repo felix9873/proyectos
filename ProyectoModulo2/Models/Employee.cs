@@ -14,7 +14,7 @@ namespace ProyectoModulo2.Models
 
         public override string ToString()
         {
-            return $"employee  {Name} id {Id} Dni {Dni} {}";
+            return $"employee  {Name} id {Id} Dni {Dni} email {Email}";
         }
 
 
