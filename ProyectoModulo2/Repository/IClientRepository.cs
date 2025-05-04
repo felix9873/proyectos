@@ -1,4 +1,5 @@
 ﻿using ProyectoModulo2.Models;
+using ProyectoModulo2.Models.Abstact;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,9 @@ namespace ProyectoModulo2.Repository
 {
     public interface IClientRepository : IRepository<Client>
     {
-        List<Client> GetByDni(string dni);
+        Client GetByDni(string dni);
         Client GetByEmail(string email);
+        List<Order> GetClientOrder(int customerId)
     }
+
 }

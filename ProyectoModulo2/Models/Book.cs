@@ -20,5 +20,10 @@ namespace ProyectoModulo2.Models
         {
             return $"book {Title} id {Id} author {Author} gender book {GenderBook.ToString()}";
         }
+
+        public static implicit operator List<object>(Book v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoModulo2.Models
+namespace ProyectoModulo2.Models.Abstact
 {
     public abstract class Person
     {

@@ -1,37 +1,21 @@
 ﻿using ProyectoModulo2.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ProyectoModulo2.Repository;
 
 namespace ProyectoModulo2.Services
 {
     public class EmployeeService : IEmployeeService
     {
-        public void AddBook(Book book)
+        private readonly IEmployeeRepository _employeeRepository;
+        public EmployeeService(IEmployeeRepository employeeRepository)
         {
-            throw new NotImplementedException();
+            _employeeRepository = employeeRepository;
+
+        }
+        public List<Employee> GetEmployeByName(string employeName)
+        {
+            return  _employeeRepository.GetEmployeByName(employeName);
         }
 
-        public void DeleteBook(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetBook()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateBook(int id)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

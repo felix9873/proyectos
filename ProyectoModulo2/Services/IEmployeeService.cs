@@ -10,13 +10,7 @@ namespace ProyectoModulo2.Services
 {
     public interface IEmployeeService
     {
-        void AddBook(Book book);
-        void UpdateBook(int id);
-
-        void DeleteBook(int id);
-
-        void GetById(int id);
-
-        void GetBook();
+        
+        List<Employee> GetEmployeByName(string employeName);
     }
 }

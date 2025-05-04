@@ -11,6 +11,7 @@ namespace ProyectoModulo2.Repository
     public class OrdeRepository : IOrderRepository
     {
         private List<Order> _orders = new List<Order>();
+        private int next_id = 1;
 
         public List<Order> GetAll()
         {
@@ -23,6 +24,7 @@ namespace ProyectoModulo2.Repository
 
         public void Add(Order entity)
         {
+            entity.Id = next_id++;
             _orders.Add(entity);
         }
 
@@ -48,6 +50,26 @@ namespace ProyectoModulo2.Repository
             throw new NotImplementedException();
         }
 
+        public List<Order> GetOrders()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Order> GetOrderByClient(int clientId)
+        {
+            return _orders.Where(c => c.Id == clientId).ToList();
+
+        }
+
+        public Payment AssignPayment(Payment payment)
+        {
+            throw new NotImplementedException();
+        }
+
         
+        public Order GetOrderByBookId(int customerId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

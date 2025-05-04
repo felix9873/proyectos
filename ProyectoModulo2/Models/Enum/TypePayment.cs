@@ -8,5 +8,8 @@ namespace ProyectoModulo2.Models.Enum
 {
     public enum TypePayment
     {
+        CreditCard,
+        Plin,
+        Cash
     }
 }

@@ -6,6 +6,10 @@ namespace ProyectoModulo2.Services
 {
     public interface IClientService
     {
-        public void AddOrder(Order order);
+        Client  GetOrCreateClient(string name, string phone, string email, string dni);
+        Client GetClientById(int id);
+        List<Client> GetClients();
+        Client GetClientByEmail(string email);
+        List<Order> GetClientOrder(int clientId);
     }
 }

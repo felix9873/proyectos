@@ -10,7 +10,7 @@ namespace ProyectoModulo2.Repository
     public class EmployeeRepository : IEmployeeRepository
     {
         private List<Employee> _employees = new List<Employee>();
-
+        private int next_id = 1;
         public List<Employee> GetAll()
         {
             return _employees;
@@ -23,6 +23,7 @@ namespace ProyectoModulo2.Repository
 
         public void Add(Employee entity)
         {
+           entity.Id = next_id++;
             _employees.Add(entity);
         }
 

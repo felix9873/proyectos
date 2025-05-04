@@ -1,4 +1,5 @@
 ﻿using ProyectoModulo2.Models;
+using ProyectoModulo2.Models.Enum;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,12 +12,58 @@ namespace ProyectoModulo2.Repository
     public class BookRepository : IBookRepository
     {
         private List<Book> _books = new List<Book>();
+
+        private int next_id = 1;
+
+        public BookRepository()
+        {
+            _books.Add(new Book 
+            { Id = next_id++,
+              Title = "el hobbit",
+              Author = "J.R.R Tolkien",
+              GenderBook = GenderBook.Fantasy,
+              Description = "is a fantasy novel by the British philologist and writer J. R. R. Tolkien."
+            });
+            _books.Add(new Book
+            {
+                Id = next_id++,
+                Title = "el hobbit",
+                Author = "J.R.R Tolkien",
+                GenderBook = GenderBook.Fantasy,
+                Description = "is a fantasy novel by the British philologist and writer J. R. R. Tolkien."
+            });
+            _books.Add(new Book
+            {
+                Id = next_id++,
+                Title = "el hobbit",
+                Author = "J.R.R Tolkien",
+                GenderBook = GenderBook.Fantasy,
+                Description = "is a fantasy novel by the British philologist and writer J. R. R. Tolkien."
+            });
+            _books.Add(new Book
+            {
+                Id = next_id++,
+                Title = "el hobbit",
+                Author = "J.R.R Tolkien",
+                GenderBook = GenderBook.Fantasy,
+                Description = "is a fantasy novel by the British philologist and writer J. R. R. Tolkien."
+            });
+            _books.Add(new Book
+            {
+                Id = next_id++,
+                Title = "el hobbit",
+                Author = "J.R.R Tolkien",
+                GenderBook = GenderBook.Fantasy,
+                Description = "is a fantasy novel by the British philologist and writer J. R. R. Tolkien."
+            });
+        }
         public List<Book> GetAll()
         {
             return _books;
         }
         public void Add(Book entity)
         {
+            entity.Id = next_id++;
             _books.Add(entity);
         }
 
@@ -35,9 +82,9 @@ namespace ProyectoModulo2.Repository
             _books.Remove(entity);
         }
 
-        public List<Book> GetByTitle(string title)
+        public Book GetByTitle(string title)
         {
-            return _books.Where(b => b.Title == title).ToList();
+            return _books.FirstOrDefault(b => b.Title == title);
         }
 
         

@@ -10,7 +10,9 @@ namespace ProyectoModulo2.Repository
 {
     public interface IOrderRepository : IRepository<Order>
     {
-        List<Order> GetByTypeOrder(TypeOrder type);
-        List<Payment> GetPayment();
+        
+       Payment AssignPayment(Payment payment);
+       List<Order> GetOrdeByClient(int clientId);
+       List<Order> GetOrdeByBook(int bookId);
     }
 }

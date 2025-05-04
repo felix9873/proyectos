@@ -1,4 +1,5 @@
 ﻿using ProyectoModulo2.Models;
+using ProyectoModulo2.Models.Abstact;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace ProyectoModulo2.Repository
 {
     public interface IBookRepository : IRepository<Book>
     {
-        List<Book> GetByTitle(string title);
+        Book GetByTitle(string title);
+        List<Order> GetBookOrder(int bookId);
+
     }
 }
