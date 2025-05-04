@@ -1,18 +1,14 @@
 ﻿using ProyectoModulo2.Models;
-using ProyectoModulo2.Models.Abstact;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoModulo2.Services
+namespace ProyectoModulo2.Repository
 {
-    public class ClientSerice 
+    public interface IBookRepository : IRepository<Book>
     {
-        
-
-        
-        
+        List<Book> GetByTitle(string title);
     }
 }

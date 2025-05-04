@@ -1,9 +1,6 @@
 ﻿using ProyectoModulo2.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ProyectoModulo2.Models.Abstact;
+
 
 namespace ProyectoModulo2.Services
 {
