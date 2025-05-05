@@ -42,6 +42,20 @@ namespace ProyectoModulo2.Services
         public Book GetBookByTitle(string title) => _bookRepository.GetByTitle(title);
         
         public List<Order> GetBookOrder(int bookId) =>  _orderRepository.GetOrdeByBook(bookId);
-        
+
+        public void Add(Book book)
+        {
+            _bookRepository.Add(book);
+        }
+
+        public void Updated(Book book)
+        {
+            _bookRepository.Update(book);
+        }
+
+        public void Delete(Book book)
+        {
+           _bookRepository.Delete(book);
+        }
     }
 }

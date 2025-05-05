@@ -79,7 +79,7 @@ namespace ProyectoModulo2.Repository
 
         public List<Order> GetOrdeByBook(int bookId)
         {
-            return _orders.Where(o => o.IdBook == bookId).ToList();
+            return _orders.Where(o => o.IdBook == bookId).ToList() ;
         }
     }
 }
