@@ -89,6 +89,7 @@ namespace ProyectoModulo2.Repository
         public Book GetByTitle(string title)
         {
             return _books.FirstOrDefault(b => b.Title == title);
+            
         }
 
         public List<Order> GetBookOrder(int bookId)

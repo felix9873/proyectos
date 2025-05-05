@@ -18,7 +18,7 @@ namespace ProyectoModulo2.Models
 
         public override string ToString()
         {
-            return $" {Title} id {Id} author {Author} gender book {GenderBook.ToString()}";
+            return $"title {Title} id {Id} author {Author} gender book {GenderBook.ToString()}";
         }
 
         

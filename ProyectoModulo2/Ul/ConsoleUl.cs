@@ -189,7 +189,7 @@ namespace ProyectoModulo2.Ul
                 Console.WriteLine("2.update book");
                 Console.WriteLine("3 view Books");
                 Console.WriteLine("4.delete book");
-                Console.WriteLine("5.get book by title");
+                Console.WriteLine("5.find book by title");
                 Console.WriteLine("0.Exit");
                 Console.Write("Enter option: ");
 
@@ -236,7 +236,15 @@ namespace ProyectoModulo2.Ul
 
             var book = _bookService.GetBookByTitle(title);
 
+            if (book != null)
+            {
+                Console.WriteLine(book.ToString());
+            }
+            
             Debug.WriteLine(book);
+            
+
+           
 
         }
 
@@ -343,13 +351,13 @@ namespace ProyectoModulo2.Ul
         private void AddBooK()
         {
             Console.WriteLine("--------------------------------------------------");
-            Console.Write("titulo del libro");
+            Console.Write("titulo del libro: ");
             string title = Console.ReadLine().ToLower();
 
-            Console.Write("author del libro");
+            Console.Write("author del libro: ");
             string author = Console.ReadLine().ToLower();
 
-            Console.Write("genero del libro");
+            Console.Write("genero del libro: ");
             string genderBook = Console.ReadLine().ToLower();
 
             GenderBook gender = GenderBook.Horror;
@@ -498,7 +506,7 @@ namespace ProyectoModulo2.Ul
             }
 
             Console.WriteLine("los metodos de pago son Plin, efectivo , tarjeta de credito");
-            Console.Write("ingresa el tipo de pago ");
+            Console.Write("ingresa el tipo de pago: ");
             var typePayment = Console.ReadLine().ToLower();
 
             Console.Write("ingresa si es renta o compra: ");
@@ -507,17 +515,9 @@ namespace ProyectoModulo2.Ul
 
             TypeOrder type = TypeOrder.Rent; 
 
-            switch(typeOrder)
-            {
-                case "renta":
-                    type = TypeOrder.Rent;
-                    break;
-                case "compra":
-                    type = TypeOrder.Purchase;
-                    break;
-            }
-
+           
             Payment payment = new PlinPayment();
+            Order order = new OrderRent();
             switch(typePayment)
             {
                 case "plin":
@@ -546,19 +546,40 @@ namespace ProyectoModulo2.Ul
                    
             }
 
-            var order = new OrderRent()
+            switch (typeOrder)
             {
-                IdBook  = bookFromId.Id,
+                case "renta":
+                    type = TypeOrder.Rent;
+                    order = new OrderRent()
+                    {
+                        IdBook = bookFromId.Id,
 
-                AssignToPayment = payment,
+                        AssignToPayment = payment,
 
-                fechOrder = DateTime.Now,
+                        fechOrder = DateTime.Now,
 
-                TypeOrder = type,
-                
-            };
+                        TypeOrder = type,
+
+                    };
+                    break;
+                case "compra":
+                    type = TypeOrder.Purchase;
+                    order = new OrderPurchase()
+                    {
+                        IdBook = bookFromId.Id,
+
+                        AssignToPayment = payment,
+
+                        fechOrder = DateTime.Now,
+
+                        TypeOrder = type,
+
+                    };
+                    break;
+            }
 
             _orderService.Add(order);
+
 
             if(bookFromId != null)
             {
