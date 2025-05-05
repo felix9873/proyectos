@@ -22,6 +22,7 @@ namespace ProyectoModulo2.Ul
 
 
         private bool _isRunning = true;
+        private bool _isChoosePerson = true;
         public ConsoleUl(IClientService clientService
             , IBookService bookService , IOrderService orderService,
             IEmployeeService employeeService , IBookRentService bookRentService) 
@@ -35,7 +36,12 @@ namespace ProyectoModulo2.Ul
 
         public void Run()
         {
-            ChooseTypePerson();
+            while (_isChoosePerson)
+            {
+                ChooseTypePerson();
+                _isRunning = true;
+            }
+            
         }
 
         public void EmployeeMenu()
@@ -62,6 +68,7 @@ namespace ProyectoModulo2.Ul
                         break;
                     case "0":
                         _isRunning = false;
+                        
                         Console.WriteLine("Thank you for using the System!");
                         break;
                     default:
@@ -80,10 +87,8 @@ namespace ProyectoModulo2.Ul
             while (_isRunning)
             {
                 Console.WriteLine("\n=== Management client ===");
-                Console.WriteLine("1.add client");
-                Console.WriteLine("2.update book");
-                Console.WriteLine("3 view client");
-                Console.WriteLine("4.delete book");
+                Console.WriteLine("1.update client");
+                Console.WriteLine("2 view client");
                 Console.WriteLine("0.Exit");
                 Console.Write("Enter option: ");
 
@@ -92,19 +97,14 @@ namespace ProyectoModulo2.Ul
                 switch (option)
                 {
                     case "1":
-                        AddBooK();
+                        UpdatedClient();
                         break;
                     case "2":
-                        UpdatedBook();
-                        break;
-                    case "3":
                         ViewClients();
-                        break;
-                    case "4":
-                        DeleteBook();
                         break;
                     case "0":
                         _isRunning = false;
+                        
                         Console.WriteLine("Thank you for using the System!");
                         break;
                     default:
@@ -118,10 +118,53 @@ namespace ProyectoModulo2.Ul
             }
         }
 
+        private void UpdatedClient()
+        {
+            Console.WriteLine("update client");
+
+            Console.WriteLine("------------------------------------------------------");
+            Console.Write("ingresa el id del cliente: ");
+
+
+            var idClient= Convert.ToInt32(Console.ReadLine());
+            var clientFromId =  _ClientService.GetClientById(idClient);
+
+            if (clientFromId == null)
+            {
+                Console.WriteLine("id invalido");
+                return;
+            }
+            
+
+            Console.Write("ingresa el nombre: ");
+
+            string name = Console.ReadLine();
+
+            Console.Write("ingresa el email: ");
+
+            string email = Console.ReadLine();
+
+            Console.Write("ingresa el dni: ");
+
+            string dni = Console.ReadLine();
+
+            var client = new Client
+            {
+                Id = clientFromId.Id,
+                Name = name,
+                Dni = dni,
+                Email = email
+            };
+
+            _ClientService.Update(client);
+            Console.WriteLine($"updated client with id {clientFromId}");
+        }
+
         private void ViewClients()
         {
            Console.WriteLine("clients");
-
+           
+           Console.WriteLine("---------------------------------------------------");
            var clients = _ClientService.GetClients();
 
            if(clients.Count == 0)
@@ -136,11 +179,9 @@ namespace ProyectoModulo2.Ul
            }
 
         }
-
         private void ManagementBook()
         {
-            
-
+           
             while (_isRunning)
             {
                 Console.WriteLine("\n=== Management book ===");
@@ -148,6 +189,7 @@ namespace ProyectoModulo2.Ul
                 Console.WriteLine("2.update book");
                 Console.WriteLine("3 view Books");
                 Console.WriteLine("4.delete book");
+                Console.WriteLine("5.get book by title");
                 Console.WriteLine("0.Exit");
                 Console.Write("Enter option: ");
 
@@ -167,8 +209,12 @@ namespace ProyectoModulo2.Ul
                     case "4":
                         DeleteBook();
                         break;
+                    case "5":
+                        GetBookTitle();
+                        break;
                     case "0":
                         _isRunning = false;
+                        
                         Console.WriteLine("Thank you for using the System!");
                         break;
                     default:
@@ -182,13 +228,32 @@ namespace ProyectoModulo2.Ul
             }
         }
 
+        private void  GetBookTitle()
+        {
+            Console.Write("ingresa el titulo del libro para buscar: ");
+
+            string title = Console.ReadLine();
+
+            var book = _bookService.GetBookByTitle(title);
+
+            Debug.WriteLine(book);
+
+        }
+
         private void DeleteBook()
         {
-            Console.WriteLine("ingresa el id del libro a eliminar");
+            Console.WriteLine("--------------------------------------------------");
+            Console.Write("ingresa el id del libro a eliminar: ");
 
             int id = Convert.ToInt32(Console.ReadLine());
 
             var book = _bookService.GetBookById(id);
+
+            if(book == null)
+            {
+                Console.WriteLine("id invalido");
+                return;
+            }
 
             _bookService.Delete(book);
 
@@ -197,21 +262,28 @@ namespace ProyectoModulo2.Ul
 
         private void UpdatedBook()
         {
+            Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("update libro");
             Console.Write("ingresa el id del libro: ");
 
             var idBook = Convert.ToInt32(Console.ReadLine());
             var bookFromId = _bookService.GetBookById(idBook);
 
+            if( bookFromId == null )
+            {
+                Console.WriteLine("id invalido");
+                return;
+            }
+
             Console.Write("ingresa el titulo: ");
 
             string title = Console.ReadLine();
 
-            Console.WriteLine("ingresa el author: ");
+            Console.Write("ingresa el author: ");
 
             string author = Console.ReadLine();
 
-            Console.Write("ingresa el genero horror, romance, history,fantasy, sci fi");
+            Console.Write("ingresa el genero horror, romance, history,fantasy, sci fi: ");
             string genderBook = Console.ReadLine().ToLower();
 
             GenderBook gender = GenderBook.Horror;
@@ -233,6 +305,10 @@ namespace ProyectoModulo2.Ul
                 case "sci fi":
                     gender = GenderBook.Sci_fi;
                     break;
+                default:
+                    Console.WriteLine("genero invalido");
+                    return;
+                    
 
             }
 
@@ -246,27 +322,34 @@ namespace ProyectoModulo2.Ul
 
             _bookService.Updated(book);
 
-            Console.WriteLine(bookFromId);
+            Console.WriteLine($"updated book with id {bookFromId}" );
         }
 
         private void ViewAllBooks()
         {
            var books =   _bookService.GetBooks();
 
-            foreach (var book in books) 
-            {
-                Console.WriteLine(book);
-            }
+           if(books.Count == 0)
+           {
+                Console.WriteLine("no hay libros disponibles");
+           }
+           Console.WriteLine("books");
+           foreach (var book in books) 
+           {
+              Console.WriteLine(book);
+           }
 
         }
         private void AddBooK()
         {
+            Console.WriteLine("--------------------------------------------------");
             Console.Write("titulo del libro");
             string title = Console.ReadLine().ToLower();
 
             Console.Write("author del libro");
             string author = Console.ReadLine().ToLower();
 
+            Console.Write("genero del libro");
             string genderBook = Console.ReadLine().ToLower();
 
             GenderBook gender = GenderBook.Horror;
@@ -288,7 +371,9 @@ namespace ProyectoModulo2.Ul
                 case "sci fi":
                     gender = GenderBook.Sci_fi;
                     break;
-
+                default:
+                    Console.WriteLine("genero invalido");
+                    return;
             }
             
             _bookService.GetOrCreateBook(title, author, gender);
@@ -317,6 +402,7 @@ namespace ProyectoModulo2.Ul
                         break;
                     case "0":
                         _isRunning = false;
+                        
                         Console.WriteLine("Thank you for using the rent book System!");
                         break;
                     default:
@@ -360,6 +446,7 @@ namespace ProyectoModulo2.Ul
                 return;
             }
 
+            Console.WriteLine("orders");
             foreach (var order in orders) 
             {
                 Console.WriteLine(order);
@@ -369,7 +456,7 @@ namespace ProyectoModulo2.Ul
         private void ViewRentedBooks()
         {
             
-            Console.WriteLine();
+            Console.WriteLine("------------------------------");
             Console.WriteLine("rented books");
 
             var rentedBooks = _bookRentService.GetBooksRent();
@@ -404,13 +491,17 @@ namespace ProyectoModulo2.Ul
             var idBook = Convert.ToInt32(Console.ReadLine());
             var bookFromId = _bookService.GetBookById(idBook);
 
-            
+            if(bookFromId == null)
+            {
+                Console.WriteLine("id invalido");
+                return;
+            }
 
             Console.WriteLine("los metodos de pago son Plin, efectivo , tarjeta de credito");
             Console.Write("ingresa el tipo de pago ");
             var typePayment = Console.ReadLine().ToLower();
 
-            Console.WriteLine("ingresa si es renta o compra");
+            Console.Write("ingresa si es renta o compra: ");
 
             var typeOrder = Console.ReadLine().ToLower();
 
@@ -433,19 +524,24 @@ namespace ProyectoModulo2.Ul
                     payment = new PlinPayment 
                     { 
                         TypePayment = TypePayment.Plin
+                        
                     };
+
+                    payment.ProcessPayment(payment.TypePayment);
                     break;
                 case "efectivo":
                     payment = new CashPayment 
                     {
                         TypePayment = TypePayment.Cash
                     };
+                    payment.ProcessPayment(payment.TypePayment);
                     break;
                 case "tarjeta de credito":
                     payment = new CreditCard
                     { 
                         TypePayment = TypePayment.CreditCard
                     };
+                    payment.ProcessPayment(payment.TypePayment);
                     break;
                    
             }
@@ -477,6 +573,7 @@ namespace ProyectoModulo2.Ul
 
             order.AssignToPayment = payment;
 
+           
             Console.WriteLine("ingresa tus datos para confimar");
 
             Console.Write("ingresa tu nombre: ");
@@ -487,7 +584,11 @@ namespace ProyectoModulo2.Ul
 
             var phone = Console.ReadLine().ToLower();
 
+            Console.Write("ingresa tu numero de dni: ");
+
             var dni = Console.ReadLine().ToLower();
+
+            Console.Write("ingresa tu numero de email: ");
 
             var email = Console.ReadLine().ToLower();
 

@@ -11,9 +11,9 @@ namespace ProyectoModulo2.Models.Abstact
     public abstract class Payment : IPayment
     {
         public TypePayment TypePayment { get; set; }
-        public virtual void ProcessPayment(float amount, string message)
+        public virtual void ProcessPayment(TypePayment typePayment)
         {
-            Console.WriteLine($"amount {amount} with {message}"); 
+            Console.WriteLine($"payment with {typePayment}"); 
         }
 
         public override string ToString()

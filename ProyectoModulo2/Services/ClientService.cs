@@ -42,6 +42,10 @@ namespace ProyectoModulo2.Services
         public Client GetClientById(int id) => _clientRepository.GetById(id);
         
         public List<Order> GetClientOrder(int clientId)  => _orderRepository.GetOrdeByClient(clientId);
-        
+
+        public void Update(Client client)
+        {
+            _clientRepository.Update(client);
+        }
     }
 }

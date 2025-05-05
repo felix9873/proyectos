@@ -1,4 +1,5 @@
 ﻿using ProyectoModulo2.Models.Abstact;
+using ProyectoModulo2.Models.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace ProyectoModulo2.Models
 {
     public class CashPayment : Payment
     {
-        public override void ProcessPayment(float amount, string message)
+        public virtual void ProcessPayment(TypePayment typePayment)
         {
-            Console.WriteLine($"amount {amount} with {message}");
+            Console.WriteLine($"payment with {typePayment}");
         }
     }
 }

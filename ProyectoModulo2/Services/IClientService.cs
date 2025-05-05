@@ -11,5 +11,7 @@ namespace ProyectoModulo2.Services
         List<Client> GetClients();
         Client GetClientByEmail(string email);
         List<Order> GetClientOrder(int clientId);
+
+        void Update(Client client);
     }
 }
